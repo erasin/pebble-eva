@@ -112,7 +112,8 @@ static void handle_minute_tick(struct tm* time, TimeUnits units_changed)
         layer_set_hidden(layer, false);
 
         bitmap_layer_set_bitmap(hr_digits[i], img_hr_numbers[digit_idxs[i]]);
-        layer_set_frame(layer, GRect(bounds.size.w - BIG_W * (2 - i), 0, BIG_W, BIG_H));
+        // layer_set_frame(layer, GRect(bounds.size.w - BIG_W * (2 - i), 0, BIG_W, BIG_H));
+        layer_set_frame(layer, GRect(bounds.size.w - BIG_W, BIG_H*i, BIG_W, BIG_H));
         layer_mark_dirty(layer);
       }
       else
@@ -124,7 +125,7 @@ static void handle_minute_tick(struct tm* time, TimeUnits units_changed)
     //
 
     layer = bitmap_layer_get_layer(hr_layer);
-    layer_set_frame(layer, GRect(bounds.size.w - BIG_W, digit_used > 1 ? BIG_H : 0, BIG_W, BIG_H));
+    layer_set_frame(layer, GRect(bounds.size.w - BIG_W, digit_used > 1 ? BIG_H*2 : BIG_H, BIG_W, BIG_H));
     layer_mark_dirty(layer);
   }
 
